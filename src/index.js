@@ -14,7 +14,7 @@ async function run() {
 
   console.log(`Received ${commits.length}/${size} commits...`)
 
-  if (!commits) {
+  if (commits.length === 0) {
     console.log(`No commits, skipping...`)
     return
   }
