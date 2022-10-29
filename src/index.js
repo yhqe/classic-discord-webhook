@@ -14,6 +14,11 @@ async function run() {
 
   console.log(`Received ${commits.length}/${size} commits...`)
 
+  if (commits.length === 0) {
+    console.log(`No commits, skipping...`)
+    return
+  }
+
   const id = core.getInput('id')
   const token = core.getInput('token')
   const in_thread = core.getInput('in_thread')
