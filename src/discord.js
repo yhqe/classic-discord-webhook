@@ -6,10 +6,6 @@ module.exports.send = (id, token, repo, branch, url, commits, size, in_thread) =
         let client
         console.log('Preparing Webhook...')
         try {
-            if (!commits) {
-                console.log('No commits, skipping...')
-                return resolve(true)
-            }
             console.log(in_thread)
             if (in_thread) {
                 if (isNaN(in_thread)) {
