@@ -21,10 +21,10 @@ async function run() {
 
   const id = core.getInput('id')
   const token = core.getInput('token')
-  const in_thread = core.getInput('in_thread')
+  const threadId = core.getInput('threadId')
 
   webhook
-    .send(id, token, repository, branch, payload.compare, commits, size, in_thread)
+    .send(id, token, repository, branch, payload.compare, commits, size, threadId)
     .catch((err) => core.setFailed(err.message))
 }
 

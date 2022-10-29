@@ -1,21 +1,21 @@
 const {MessageEmbed, WebhookClient} = require("discord.js")
 const MAX_MESSAGE_LENGTH = 40
 
-module.exports.send = (id, token, repo, branch, url, commits, size, in_thread) =>
+module.exports.send = (id, token, repo, branch, url, commits, size, threadId) =>
     new Promise((resolve, reject) => {
         let client
         console.log('Preparing Webhook...')
         try {
-            console.log(in_thread)
-            if (in_thread) {
-                if (isNaN(in_thread)) {
-                    throw new Error('in_thread is not a number')
+            console.log({threadId})
+            if (threadId) {
+                if (isNaN(threadId)) {
+                    throw new Error('threadId is not a number')
                 }
                 console.log('Found thread ID')               
                 client = new WebhookClient({
                     id: id,
                     token: token,
-                    threadId: in_thread
+                    threadId: threadId
                 })
             } else {
                 client = new WebhookClient({

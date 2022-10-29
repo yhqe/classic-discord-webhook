@@ -36,12 +36,13 @@ jobs:
       with:
         id: ${{ secrets.DISCORD_WEBHOOK_ID }}
         token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
+        threadId: ${{ secrets.DISCORD_WEBHOOK_THREAD_ID }}
 ```
 
 You can see the example file at [/.github/workflows/discord-push.yml](/.github/workflows/discord-push.yml)
 ## Inputs
 
-| `id` | `token` | `in_thread`|
+| `id` | `token` | `threadId`|
 |:-----------:|:----------------------------------------------------------:|:----------------------------------------------------------:|
 | **Required** — This is the id of your Discord webhook, if you copy the webhook url, this will be the first part of it. | **Required** — Your Discord webhook token, it's the second part of the url. | Not required — if you want to send the message in a thread, you can specify the thread id here. |
 
