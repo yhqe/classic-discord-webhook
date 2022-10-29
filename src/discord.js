@@ -6,17 +6,19 @@ module.exports.send = (id, token, repo, branch, url, commits, size, in_thread) =
         let client
         console.log('Preparing Webhook...')
         try {
-            // If in_thread is empty, ignore
-            if (in_thread === '' || in_thread === null) {
-                client = new WebhookClient({id: id, token: token})
-            } else {
+            if(in_thread) {
+                console.log(in_thread)
                 client = new WebhookClient({
                     id: id,
                     token: token,
-                    // If in_thread is not empty, use it as the thread ID
                     threadId: in_thread
                 })
-            }            
+            } else {
+                client = new WebhookClient({
+                    id: id,
+                    token: token
+                })
+            }      
         } catch (error) {
             console.log('Error creating Webhook')
             reject(error.message)
