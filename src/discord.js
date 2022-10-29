@@ -1,12 +1,22 @@
 const {MessageEmbed, WebhookClient} = require("discord.js")
 const MAX_MESSAGE_LENGTH = 40
 
-module.exports.send = (id, token, repo, branch, url, commits, size) =>
+module.exports.send = (id, token, repo, branch, url, commits, size, in_thread) =>
     new Promise((resolve, reject) => {
         let client
         console.log('Preparing Webhook...')
         try {
-            client = new WebhookClient({id: id, token: token})
+            // If in_thread is empty, ignore
+            if (in_thread === '' || in_thread === null) {
+                client = new WebhookClient({id: id, token: token})
+            } else {
+                client = new WebhookClient({
+                    id: id,
+                    token: token,
+                    // If in_thread is not empty, use it as the thread ID
+                    threadId: in_thread
+                })
+            }            
         } catch (error) {
             console.log('Error creating Webhook')
             reject(error.message)
@@ -25,7 +35,6 @@ function createEmbed(repo, branch, url, commits, size) {
     console.log(latest)
     return new MessageEmbed()
         .setColor(0x00bb22)
-        //.setTitle(size + (size == 1 ? " Commit was " : " Commits were ") + "added to " + repo + " (" + branch + ")")
         .setAuthor({
             name: `${size} ${size === 1 ? 'commit was ' : 'commits were'} added to ${branch}`,
             iconURL: `https://github.com/${latest.author.username}.png?size=32`,
