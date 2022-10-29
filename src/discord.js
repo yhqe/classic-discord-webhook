@@ -35,6 +35,12 @@ module.exports.send = (id, token, repo, branch, url, commits, size, threadId) =>
 
 function createEmbed(repo, branch, url, commits, size) {
     console.log('Constructing Embed...')
+    console.log('Commits :')
+    console.log(commits)
+    if (!commits) {
+        console.log('No commits, skipping...')
+        return
+    }
     const latest = commits[0]
     return new MessageEmbed()
         .setColor(0x00bb22)
