@@ -22,17 +22,16 @@ module.exports.send = (id, token, repo, branch, url, commits, size, threadId) =>
                     id: id,
                     token: token
                 })
-            }      
+            }
+            client.send({embeds: [createEmbed(repo, branch, url, commits, size)]}).then(() => {
+                console.log('Successfully sent the message!')
+                resolve()
+            }, reject)
         } catch (error) {
             console.log('Error creating Webhook')
             reject(error.message)
             return
         }
-
-        client.send({embeds: [createEmbed(repo, branch, url, commits, size)]}).then(() => {
-            console.log('Successfully sent the message!')
-            resolve()
-        }, reject)
     })
 
 function createEmbed(repo, branch, url, commits, size) {
