@@ -6,7 +6,7 @@ module.exports.send = (id, token, repo, branch, url, commits, size, threadId) =>
         let client
         console.log('Preparing Webhook...')
         try {
-            console.log({threadId})
+            console.log({threadId: threadId})
             if (threadId) {
                 if (isNaN(threadId)) {
                     throw new Error('threadId is not a number')
