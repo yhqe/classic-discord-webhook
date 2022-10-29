@@ -8,7 +8,10 @@ module.exports.send = (id, token, repo, branch, url, commits, size, in_thread) =
         try {
             console.log(in_thread)
             if (in_thread) {
-                console.log('Found thread ID')
+                if (isNaN(in_thread)) {
+                    throw new Error('in_thread is not a number')
+                }
+                console.log('Found thread ID')               
                 client = new WebhookClient({
                     id: id,
                     token: token,
@@ -35,7 +38,6 @@ module.exports.send = (id, token, repo, branch, url, commits, size, in_thread) =
 function createEmbed(repo, branch, url, commits, size) {
     console.log('Constructing Embed...')
     const latest = commits[0]
-    //console.log(latest)
     return new MessageEmbed()
         .setColor(0x00bb22)
         .setAuthor({
