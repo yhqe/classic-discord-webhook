@@ -52,17 +52,17 @@ function createEmbed(repo, branch, url, commits, size) {
   }
   const latest = commits[0]
   return new MessageEmbed()
-    .setColor(0x00bb22)
+    .setColor(0xbebebe)
     .setAuthor({
       name: `${size} ${
-        size === 1 ? 'commit was ' : 'commits were'
+        size === 1 ? 'commit was' : 'commits were'
       } added to ${branch}`,
       iconURL: `https://github.com/${latest.author.username}.png?size=32`,
     })
     .setDescription(`${getChangeLog(commits, size)}`)
     .setTimestamp(Date.parse(latest.timestamp))
     .setFooter({
-      text: `⚡ Edited by @${latest.author.username}`,
+      text: `nicotine.rip | committed by **${latest.author.username}**`,
     })
 }
 
