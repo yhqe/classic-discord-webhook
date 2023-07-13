@@ -62,7 +62,7 @@ function createEmbed(repo, branch, url, commits, size) {
     .setDescription(`${getChangeLog(commits, size)}`)
     .setTimestamp(Date.parse(latest.timestamp))
     .setFooter({
-      text: `nicotine.rip | committed by **${latest.author.username}**`,
+      text: `nicotine.rip | committed by @${latest.author.username}`,
     })
 }
 
