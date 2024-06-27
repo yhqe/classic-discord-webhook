@@ -62,7 +62,8 @@ function createEmbed(repo, branch, url, commits, size) {
     .setDescription(`${getChangeLog(commits, size)}`)
     .setTimestamp(Date.parse(latest.timestamp))
     .setFooter({
-      text: `Homebrew | Committed by @${latest.author.username}`,
+      text: `atn.wtf | Committed by @${latest.author.username}`,
+      iconURL: 'https://i.imgur.com/Bq02hky.png'
     })
 }
 
