@@ -62,8 +62,8 @@ function createEmbed(repo, branch, url, commits, size) {
     .setDescription(`${getChangeLog(commits, size)}`)
     .setTimestamp(Date.parse(latest.timestamp))
     .setFooter({
-      text: `atn.wtf | Committed by @${latest.author.username}`,
-      iconURL: 'https://i.imgur.com/Bq02hky.png'
+      text: `committed by @${latest.author.username}`,
+      iconURL: 'https://cdn.discordapp.com/avatars/1213345054358249473/fcfa863d347ebc3def31eb09089b5f7f.webp?size=1024'
     })
 }
 
